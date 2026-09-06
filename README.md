@@ -75,7 +75,7 @@ release-5.x  CONFLICT (modify/delete): app.py deleted in HEAD and modified in <f
 ## It checks itself in front of you
 
 ```
-Self-check: PASSED (17/17 bundled analyzer cases)
+Self-check: PASSED (19/19 bundled analyzer cases)
 ```
 
 Before reading your repository it **builds a small one** in a temporary directory it owns
@@ -87,14 +87,14 @@ looks exactly like a repository with nothing to backport.
 Proved by mutation, each restored byte-identically by checksum:
 
 ```
-THE NAIVE VERSION: merge-tree without --merge-base   -> 13/17
-underpinning check removed                           -> 15/17
-symbols the patch itself defines no longer excluded  -> 15/17
-conflict kind no longer read                         -> 15/17
-merge commits rehearsed anyway                       -> 16/18
-git failure folded back into not-a-git-repo          -> 16/17
-patch-id equivalence check removed                   -> 16/17
-relative root no longer refused at all               -> 16/17
+THE NAIVE VERSION: merge-tree without --merge-base   -> 15/19
+underpinning check removed                          -> 17/19
+symbols the patch itself defines no longer excluded -> 17/19
+conflict kind no longer read                        -> 17/19
+patch-id equivalence check removed                  -> 18/19
+merge commits rehearsed anyway                      -> 18/20
+git failure folded back into not-a-git-repo         -> 18/19
+relative root no longer refused                     -> 18/19
 ```
 
 ## Read-only by construction, not by intention
