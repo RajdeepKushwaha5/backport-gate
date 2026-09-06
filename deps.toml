@@ -1,0 +1,37 @@
+schema_version = 1
+
+[[tools]]
+id = "python3"
+command = "python3"
+required = true
+version_requirement = ">=3.8.0"
+
+[[tools.install]]
+manager = "apt"
+package = "python3"
+
+[[tools.install]]
+manager = "brew"
+package = "python3"
+
+[[tools.install]]
+manager = "dnf"
+package = "python3"
+
+[[tools]]
+id = "git"
+command = "git"
+required = true
+version_requirement = ">=2.38.0"
+
+[[tools.install]]
+manager = "apt"
+package = "git"
+
+[[tools.install]]
+manager = "brew"
+package = "git"
+
+[[tools.install]]
+manager = "dnf"
+package = "git"
