@@ -258,6 +258,27 @@ def main():
         failures.append({"case": "paths:non-ascii-are-not-escaped",
                          "detail": "could not read the analyzer: %s" % _e})
 
+
+    # ---- the play must run with no arguments at all
+    #
+    # A reviewer pulled all nine and found three that did not: two declared required
+    # parameters and refused, and one defaulted to the reader's real history instead of
+    # the bundled example. No self-check looked at the frontmatter, so nothing caught it.
+    total += 1
+    try:
+        _mt = open(os.path.join(HERE, "..", "main.ts"), encoding="utf-8").read()
+        _params = _mt.split("* parameters:")[1].split("* metadata:")[0] if "* parameters:" in _mt else ""
+        _required = [ln for ln in _params.split(chr(10)) if "required: true" in ln]
+        if _required:
+            failures.append({
+                "case": "runs-bare:no-required-parameters",
+                "detail": "%d parameter(s) are declared required, so `rote play run "
+                          "<this>` refuses instead of showing the bundled example"
+                          % len(_required)})
+    except Exception as _e:
+        failures.append({"case": "runs-bare:no-required-parameters",
+                         "detail": "could not read the frontmatter: %s" % _e})
+
     print(json.dumps({"passed": total - len(failures), "total": total,
                       "failures": failures[:10]}, separators=(",", ":")))
 
